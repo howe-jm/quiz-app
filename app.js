@@ -56,7 +56,7 @@ function render() {
   */
   } else {
     if (STORE.questionNumber < STORE.questions.length) {
-      $('.js-main').html(QuizQuestionPage(STORE, STORE.questionNumber));
+      $('.js-main').html(quizQuestionStringGenerator(STORE.questions[STORE.questionNumber]));
       /*  And if STORE.questionNumber is equal to or greater than STORE.questions.length,
         we move on and display the quiz results page. It is dynamically generated (it 
         displays the total amount of questions the user answered correctly), but since
@@ -98,21 +98,6 @@ function quizStartPageString() {
 }
 
 // Quiz question page functions.
-
-/*  This function takes arguments from the 'render' function
-    and dynamically generates a question page based on the
-    arguments. It then feeds the array and the number of the
-    question in to the quizQuestionStringGenerator as one argument
-    and generates the HTML for the question that needs to be displayed.
-    This way, the template (and no other code) can be stored, easily
-    found, and manipulated later.
-*/
-
-function QuizQuestionPage(array, qNum) {
-  const question = array.questions[qNum];
-  const questionHTML = quizQuestionStringGenerator(question);
-  return questionHTML;
-}
 
 /*
     This function is a callback of the 'main' function and monitors
