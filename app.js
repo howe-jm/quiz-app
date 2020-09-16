@@ -50,18 +50,18 @@ function render() {
   // If the quizStarted property of STORE is false, we display the quiz start page.
   if (STORE.quizStarted === false) {
     $('.js-main').html(quizStartPageString());
-  /* Otherwise, we check that the current questionNumber value is less than the
+    /* Otherwise, we check that the current questionNumber value is less than the
   length of the questions array. If it is, we call the QuizQuestionPage function
   with the STORE object, and the STORE.questionNumber value as arguments.
   */
   } else {
     if (STORE.questionNumber < STORE.questions.length) {
       $('.js-main').html(QuizQuestionPage(STORE, STORE.questionNumber));
-    /*  And if STORE.questionNumber is equal to or greater than STORE.questions.length,
+      /*  And if STORE.questionNumber is equal to or greater than STORE.questions.length,
         we move on and display the quiz results page. It is dynamically generated (it 
         displays the total amount of questions the user answered correctly), but since
         it displays global variables, it does not need its own function.
-    */  
+    */
     } else {
       $('.js-main').html(QuizResultsPage());
     }
@@ -124,7 +124,7 @@ function QuizQuestionPage(array, qNum) {
 */
 
 function questionSubmitButton() {
-  $('.js-main').on('click', '.js-question-page-submit', (evt) => {
+  $('.js-main').submit('#quiz-form', (evt) => {
     evt.preventDefault();
     if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
       STORE.score++;
@@ -147,15 +147,15 @@ function quizQuestionStringGenerator(quest) {
   <section class="quiz-container">
   <p>Cheat Mode Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}</p>
   <form id="quiz-form"><h4>${quest.question}</h4>
-    <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}">
+    <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
     <label for="ans1">${quest.answers[0]}</label><br>
-    <input type="radio" id="ans1" name="answers" value="${quest.answers[1]}">
-    <label for="ans1">${quest.answers[1]}</label><br>
-    <input type="radio" id="ans1" name="answers" value="${quest.answers[2]}">
-    <label for="ans1">${quest.answers[2]}</label><br>
-    <input type="radio" id="ans1" name="answers" value="${quest.answers[3]}">
-    <label for="ans1">${quest.answers[3]}</label><br>
-    <button class="js-question-page-submit">SUBMIT ANSWER</button>
+    <input type="radio" id="ans2" name="answers" value="${quest.answers[1]}">
+    <label for="ans2">${quest.answers[1]}</label><br>
+    <input type="radio" id="ans3" name="answers" value="${quest.answers[2]}">
+    <label for="ans3">${quest.answers[2]}</label><br>
+    <input type="radio" id="ans4" name="answers" value="${quest.answers[3]}">
+    <label for="ans4">${quest.answers[3]}</label><br>
+    <input type="submit" value="SUBMIT ANSWER" class="js-question-page-submit">
   </form>
   <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
   </section>
@@ -182,6 +182,9 @@ function QuizResultsPage() {
   `;
 }
 
+function resultsResetButton() {
+  $('.js-main').on('click', '.js-results-page-submit', () => location.reload());
+}
 /*
     This is the main callback function. It triggers the initial render
     of the page, as well as runs the button functions. Even though the
@@ -195,16 +198,13 @@ function main() {
   render();
   quizStartPageStartButton();
   questionSubmitButton();
+  resultsResetButton();
 }
 
 // And finally, the main callback, loaded when the page is finished loading.
 // This is what starts the show!
 
 $(main);
-
-
-
-
 
 /**
  *
