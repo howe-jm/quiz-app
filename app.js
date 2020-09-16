@@ -10,29 +10,29 @@ const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What day starts with W?',
-      answers: ['Sunday', 'Wednesday', 'April', 'Bacon'],
-      correctAnswer: 'Wednesday',
+      question: 'Where did Yoda exile to after the fall of the Republic?',
+      answers: ['Tattooine', 'Dagobah', 'Kashyyk', 'Coruscant'],
+      correctAnswer: 'Dagobah',
     },
     {
-      question: 'What\'s the coldest month of the year?',
-      answers: ['February', 'June', 'August', 'May'],
-      correctAnswer: 'February',
+      question: 'Where is the capital of the Republic?',
+      answers: ['Naboo', 'Geonosis', 'Coruscant', 'Kamino'],
+      correctAnswer: 'Coruscant',
     },
     {
-      question: 'What continent is mostly frozen?',
-      answers: ['Asia', 'Antarctica', 'Australia', 'South America'],
-      correctAnswer: 'Antarctica',
+      question: 'What was Han Solo\'s original job title?',
+      answers: ['Pirate', 'Trooper', 'Gambler', 'Smuggler'],
+      correctAnswer: 'Smuggler',
     },
     {
-      question: 'When is a door not a door?',
-      answers: ['When it\'s open.', 'When it\'s closed.', 'When it\'s ajar.', 'When it\'s cracked.'],
-      correctAnswer: 'When it\'s ajar.',
+      question: 'Who brought about the end of the Republic?',
+      answers: ['Yoda', 'Palpatine', 'Dooku', 'Anakin'],
+      correctAnswer: 'Palpatine',
     },
     {
-      question: 'What does lava do?',
-      answers: ['Dance', 'Jump', 'Cool', 'Burn'],
-      correctAnswer: 'Burn',
+      question: 'What is the name of Luke Skywalker\'s ship?',
+      answers: ['X-wing', 'Y-wing', 'Millenium Falcon', 'Tie fighter'],
+      correctAnswer: 'X-wing',
     },
   ],
   quizStarted: false,
@@ -91,7 +91,7 @@ function quizStartPageString() {
   return `
   <section class="quiz-container">
   <form class="quiz-form">
-    <button class="js-start-page-submit">START</button>
+    <button class="js-start-page-submit" type="submit">START</button>
   </form>
   </section>
 `;
@@ -130,19 +130,29 @@ function questionSubmitButton() {
 function quizQuestionStringGenerator(quest) {
   return `
   <section class="quiz-container">
-  <p>Cheat Mode Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}</p>
-  <form id="quiz-form"><h4>${quest.question}</h4>
-    <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
-    <label for="ans1">${quest.answers[0]}</label><br>
-    <input type="radio" id="ans2" name="answers" value="${quest.answers[1]}">
-    <label for="ans2">${quest.answers[1]}</label><br>
-    <input type="radio" id="ans3" name="answers" value="${quest.answers[2]}">
-    <label for="ans3">${quest.answers[2]}</label><br>
-    <input type="radio" id="ans4" name="answers" value="${quest.answers[3]}">
-    <label for="ans4">${quest.answers[3]}</label><br>
-    <input type="submit" value="SUBMIT ANSWER" class="js-question-page-submit">
-  </form>
+  <h2>${quest.question}</h2>
   <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
+  <form id="quiz-form">
+    <ul>
+    <li>
+      <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
+      <label for="ans1">${quest.answers[0]}</label><br>
+    </li>
+    <li>
+      <input type="radio" id="ans2" name="answers" value="${quest.answers[1]}">
+      <label for="ans2">${quest.answers[1]}</label><br>
+    </li>
+    <li>
+      <input type="radio" id="ans3" name="answers" value="${quest.answers[2]}">
+      <label for="ans3">${quest.answers[2]}</label><br>
+    </li>
+    <li>
+      <input type="radio" id="ans4" name="answers" value="${quest.answers[3]}">
+      <label for="ans4">${quest.answers[3]}</label><br>
+    </li>
+      <input type="submit" value="SUBMIT ANSWER" class="js-question-page-submit">
+    </ul>
+  </form>
   </section>
   `;
 }
@@ -158,10 +168,12 @@ function quizQuestionStringGenerator(quest) {
 function QuizResultsPage() {
   return `
   <section class="quiz-container">
-  <p>Results Page</p>
+  <h2>Result</h2>
   <p>Final score is ${STORE.score} out of ${STORE.questions.length}</p>
   <form class="quiz-form">
-    <button class="js-results-page-submit">Restart</button>
+    <div class="start-button">
+      <button class="js-results-page-submit">Restart</button>
+    </div>
   </form>
   </section>
   `;
