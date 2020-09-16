@@ -6,3 +6,136 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+main {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+body {
+  background-color: black;  
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+header {
+  color: white;
+  background-color: darkslategrey;
+  margin: auto;
+}
+
+h1 {
+  font-size: 55px;
+  text-align: center;
+  margin: 5%;
+}
+
+h2 {
+  font-size: 28px;
+  margin: auto;
+  padding: 5%;
+}
+
+hr {
+  height: 4px;
+  background-color: darkslategrey;
+  border: 1px solid white;
+  width: 75%;
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.question-outof {
+  font-size: 14px;
+}
+
+.question-prompt {
+  font-size: 28px;
+}
+
+section {
+  display: flexbox;
+  flex-direction: row;
+  text-align: center;
+}
+
+form {
+  font-size: 22px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+ul {
+  list-style-position: initial;
+  list-style-type: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: auto;
+  font-size: 22px;
+  padding-right: 5%;
+}
+
+ul {
+  list-style-position: initial;
+  list-style-type: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: auto;
+  font-size: 22px;
+  padding-right: 5%;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+}
+
+.js-start-page-submit {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+}
+
+.js-results-page-submit {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+}
+
+.js-question-page-submit {
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: auto;
+  font-size: 22px;
+}
+
+@media all and (min-width: 600px) {
+  main {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  header {
+      display: flex;
+      justify-content: center;
+      padding: 0 30px;
+  }
+
+  header h1 {
+      margin: 14px 0;
+      padding-top: 0;
+  }
+}
