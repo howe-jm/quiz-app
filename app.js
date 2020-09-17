@@ -144,7 +144,7 @@ function quizQuestionStringGenerator(quest) {
   <form id="quiz-form">
     <ul>
     <li>
-      <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required checked="checked">
+      <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
       <label for="ans1">${quest.answers[0]}</label><br>
     </li>
     <li>
