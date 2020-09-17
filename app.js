@@ -90,9 +90,11 @@ function quizStartPageStartButton() {
 
 function quizStartPageString() {
   return `
-  <section class="quiz-container">
+  <section>
   <form class="quiz-form">
-    <button class="js-start-page-submit" type="submit">START</button>
+    <div class="start-button">
+      <button class="js-start-page-submit" type="submit">START</button>
+    </div>
   </form>
   </section>
 `;
@@ -157,7 +159,7 @@ function quizQuestionStringGenerator(quest) {
       <input type="radio" id="ans4" name="answers" value="${quest.answers[3]}">
       <label for="ans4">${quest.answers[3]}</label><br>
     </li>
-      <input type="submit" value="SUBMIT ANSWER" class="js-question-page-submit">
+      <input type="submit" value="SuBMiT ANSWER" class="js-question-page-submit">
     </ul>
   </form>
   </section>
@@ -186,6 +188,7 @@ function QuizResultsPage() {
   </section>
   `;
 }
+
 
 function resultsResetButton() {
   $('.js-main').on('click', '.js-results-page-submit', () => location.reload());
