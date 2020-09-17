@@ -38,6 +38,7 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
+  correct: false
 };
 
 /*  The rendering function, which checks to see which stage of the quiz the
@@ -113,9 +114,14 @@ function questionSubmitButton() {
     evt.preventDefault();
     if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
       STORE.score++;
+      STORE.questionNumber++;
+      STORE.correct = true;
+      render();
+    } else {
+      STORE.questionNumber++;
+      STORE.correct = false;
+      render();
     }
-    STORE.questionNumber++;
-    render();
   });
 }
 
@@ -131,6 +137,7 @@ function quizQuestionStringGenerator(quest) {
   return `
   <section class="quiz-container">
   <h2>${quest.question}</h2>
+  ${STORE.questionNumber < 1 ? '' : STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>' }
   <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
   <form id="quiz-form">
     <ul>
@@ -169,6 +176,7 @@ function QuizResultsPage() {
   return `
   <section class="quiz-container">
   <h2>Result</h2>
+  ${STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>'}
   <p>Final score is ${STORE.score} out of ${STORE.questions.length}</p>
   <form class="quiz-form">
     <div class="start-button">
