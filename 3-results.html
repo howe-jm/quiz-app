@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quiz App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Test your knowledge, Jedi.</h1>
+    </header>
+
+    <section class="quiz-container">
+      <h2>Result</h2>
+      <!-- ${STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>'} -->
+      <p>Final score is ${STORE.score} out of ${STORE.questions.length}</p>
+      <form class="quiz-form">
+        <div class="start-button">
+          <button class="js-results-page-submit">Restart</button>
+        </div>
+      </form>
+      </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  </body>
+</html>

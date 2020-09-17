@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quiz App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600;800&display=swap" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Test your knowledge, Jedi.</h1>
+    </header>
+
+    <section class="quiz-container">
+      <h2>${quest.question}</h2>
+      <!-- ${STORE.questionNumber < 1 ? '' : STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>' }
+      <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>-->
+      <form id="quiz-form">
+        <ul>
+        <li>
+          <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
+          <label for="ans1">${quest.answers[0]}</label><br>
+        </li>
+        <li>
+          <input type="radio" id="ans2" name="answers" value="${quest.answers[1]}">
+          <label for="ans2">${quest.answers[1]}</label><br>
+        </li>
+        <li>
+          <input type="radio" id="ans3" name="answers" value="${quest.answers[2]}">
+          <label for="ans3">${quest.answers[2]}</label><br>
+        </li>
+        <li>
+          <input type="radio" id="ans4" name="answers" value="${quest.answers[3]}">
+          <label for="ans4">${quest.answers[3]}</label><br>
+        </li>
+          <input type="submit" value="SuBMiT ANSWER" class="js-question-page-submit">
+        </ul>
+      </form>
+      </section>
+      
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  </body>
+</html>
