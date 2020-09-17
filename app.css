@@ -186,7 +186,7 @@ li label:hover {
   text-decoration: none;
   /* margin: 4px 2px; */
   cursor: pointer;
-  font-family: 'Star Jedi';
+  font-family: 'star_jediregular', Arial, sans-serif;
 }
 
 .js-question-page-submit {
