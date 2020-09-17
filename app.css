@@ -17,7 +17,7 @@ main {
 body {
   background-color: #363b40;
   font-family: 'Baloo Tammudu 2', cursive;
-  background-image: url('star-wars-bg.png');
+  background-image: url('images/star-wars-bg.png');
   color: white;
   margin: 0;
   padding: 0;
@@ -54,7 +54,7 @@ hr {
 
 .swimg {
   /* display: flex; */
-  background-image: url('star-wars-logo.jpg');
+  background-image: url('images/star-wars-logo.jpg');
   justify-content: center;
   text-align: center;
   width: min-content;
