@@ -233,11 +233,11 @@ li label:hover {
 /* Post question/results page styling */
 
 .red {
-  color: darkred;
+  color: rgb(243, 57, 57);
 }
 
 .blue {
-  color: darkblue;
+  color: rgb(39, 141, 236);
 }
 
 .post-question {
@@ -246,6 +246,7 @@ li label:hover {
   border: solid yellow 2px;
   height: 200px;
   padding: 0 20px;
+  margin-bottom: 40px;
 }
 
 .post-question p {

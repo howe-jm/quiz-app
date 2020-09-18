@@ -120,12 +120,14 @@ function questionSubmitButton() {
       $('.post-question').html(generatePostQuestionString(STORE.correct));
       $('.post-question').removeClass('hidden');
       $('.answer-select').addClass('hidden');
+      $('.question-stats').addClass('hidden');
       $('.js-question-page-submit').addClass('hidden');
     } else {
       STORE.correct = false;
       $('.post-question').html(generatePostQuestionString(STORE.correct));
       $('.post-question').removeClass('hidden');
       $('.answer-select').addClass('hidden');
+      $('.question-stats').addClass('hidden');
       $('.js-question-page-submit').addClass('hidden');
     }
   });
@@ -144,6 +146,7 @@ function nextQuestionButton() {
     STORE.questionNumber++;
     $('.post-question').addClass('hidden');
     $('.answer-select').removeClass('hidden');
+    $('.question-stats p').removeClass('hidden');
     $('.js-question-page-submit').removeClass('hidden');
     render();
   });
@@ -182,8 +185,8 @@ function quizQuestionStringGenerator(quest) {
     </ul>
     <div class="post-question hidden"></div>
   </form>
-  <p>Answered Correctly: ${STORE.score}</p><p>Answered Incorrectly: ${STORE.questionNumber - STORE.score}</p>
-  <p>Question ${STORE.questionNumber + 1} out of ${STORE.questions.length}</p>
+  <p class="question-stats">Answered Correctly: ${STORE.score}</p><p class="question-stats">Answered Incorrectly: ${STORE.questionNumber - STORE.score}</p>
+  <p class="question-stats">Question ${STORE.questionNumber + 1} out of ${STORE.questions.length}</p>
   </section>
   `;
 }
