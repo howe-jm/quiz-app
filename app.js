@@ -38,7 +38,7 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
-  correct: false
+  correct: false,
 };
 
 /*  The rendering function, which checks to see which stage of the quiz the
@@ -112,21 +112,42 @@ function quizStartPageString() {
 */
 
 function questionSubmitButton() {
-  $('.js-main').submit('#quiz-form', (evt) => {
+  $('.js-main').submit('.js-question-page-submit', (evt) => {
     evt.preventDefault();
     if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
       STORE.score++;
-      STORE.questionNumber++;
       STORE.correct = true;
-      render();
+      $('.post-question').html(generatePostQuestionString(STORE.correct));
+      $('.post-question').removeClass('hidden');
+      $('.answer-select').addClass('hidden');
+      $('.js-question-page-submit').addClass('hidden');
     } else {
-      STORE.questionNumber++;
       STORE.correct = false;
-      render();
+      $('.post-question').html(generatePostQuestionString(STORE.correct));
+      $('.post-question').removeClass('hidden');
+      $('.answer-select').addClass('hidden');
+      $('.js-question-page-submit').addClass('hidden');
     }
   });
 }
 
+function generatePostQuestionString(correct) {
+  const string = correct
+    ? `<p>The correct answer was ${STORE.questions[STORE.questionNumber].correctAnswer}.</p><p>You answered <span class="blue">RIGHT!</span></p> <input type="submit" value="proceed" class="js-question-page-next"></input>`
+    : `<p>The correct answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</p><p>You answered <span class="red">WRONG!</span></p></p> <input type="submit" value="proceed" class="js-question-page-next"></input>`;
+  return string;
+}
+
+function nextQuestionButton() {
+  $('.js-main').on('click', '.js-question-page-next', (evt) => {
+    evt.preventDefault();
+    STORE.questionNumber++;
+    $('.post-question').addClass('hidden');
+    $('.answer-select').removeClass('hidden');
+    $('.js-question-page-submit').removeClass('hidden');
+    render();
+  });
+}
 /*
     This function stores the template for the questions. Since all of
     our questions have only four potential answers, there is no need
@@ -139,10 +160,8 @@ function quizQuestionStringGenerator(quest) {
   return `
   <section class="quiz-container">
   <h2>${quest.question}</h2>
-  ${STORE.questionNumber < 1 ? '' : STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>' }
-  <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
   <form id="quiz-form">
-    <ul>
+    <ul class="answer-select">
     <li>
       <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
       <label for="ans1">${quest.answers[0]}</label><br>
@@ -161,7 +180,9 @@ function quizQuestionStringGenerator(quest) {
     </li>
       <input type="submit" value="SuBMiT ANSWER" class="js-question-page-submit">
     </ul>
+    <div class="post-question hidden"></div>
   </form>
+  <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
   </section>
   `;
 }
@@ -177,18 +198,15 @@ function quizQuestionStringGenerator(quest) {
 function QuizResultsPage() {
   return `
   <section class="quiz-container">
-  <h2>Result</h2>
-  ${STORE.correct ? '<p>You answered RIGHT!</p>' : '<p>You answered WRONG!</p>'}
+  <form class="results-box">
+  <p>The correct answer was ${STORE.questions[4].correctAnswer}.</p>
+  ${STORE.correct ? '<p>You answered <span class="blue">RIGHT!</span></p>' : '<p>You answered <span class="red">WRONG!<span></p>'}
   <p>Final score is ${STORE.score} out of ${STORE.questions.length}</p>
-  <form class="quiz-form">
-    <div class="start-button">
-      <button class="js-results-page-submit">Restart</button>
-    </div>
+  <button class="js-results-page-submit restart-button">Restart</button>
   </form>
   </section>
   `;
 }
-
 
 function resultsResetButton() {
   $('.js-main').on('click', '.js-results-page-submit', () => location.reload());
@@ -207,6 +225,7 @@ function main() {
   quizStartPageStartButton();
   questionSubmitButton();
   resultsResetButton();
+  nextQuestionButton();
 }
 
 // And finally, the main callback, loaded when the page is finished loading.
