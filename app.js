@@ -114,26 +114,30 @@ function quizStartPageString() {
 function questionSubmitButton() {
   $('.js-main').submit('.js-question-page-submit', (evt) => {
     evt.preventDefault();
-    if ($('form input[type=radio]:checked').val() === undefined) {
-      $('.answer-select').addClass('alertborder');
-      $('.alert-text').removeClass('hidden');
+    if (!$('form input[type=radio]:checked').val()) {
+      noAnswerDisplay();
   } else if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
       STORE.score++;
       STORE.correct = true;
-      $('.post-question').html(generatePostQuestionString(STORE.correct));
-      $('.post-question').removeClass('hidden');
-      $('.answer-select').addClass('hidden');
-      $('.question-stats').addClass('hidden');
-      $('.js-question-page-submit').addClass('hidden');
+      postQuestionDisplay();
     } else {
       STORE.correct = false;
-      $('.post-question').html(generatePostQuestionString(STORE.correct));
-      $('.post-question').removeClass('hidden');
-      $('.answer-select').addClass('hidden');
-      $('.question-stats').addClass('hidden');
-      $('.js-question-page-submit').addClass('hidden');
+      postQuestionDisplay();
     }
   });
+}
+
+function postQuestionDisplay() {
+  $('.post-question').html(generatePostQuestionString(STORE.correct));
+  $('.post-question').removeClass('hidden');
+  $('.answer-select').addClass('hidden');
+  $('.question-stats').addClass('hidden');
+  $('.js-question-page-submit').addClass('hidden');
+} 
+
+function noAnswerDisplay() {
+  $('.answer-select').addClass('alertborder');
+  $('.alert-text').removeClass('hidden');
 }
 
 function generatePostQuestionString(correct) {
