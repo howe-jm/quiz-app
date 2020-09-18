@@ -189,8 +189,7 @@ li label:hover {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 0;
-  margin-top: 10%;
+  margin: 10% 0 0 3%;
   /* position: absolute; */
   background-color: yellow;
   border: none;
@@ -222,6 +221,14 @@ li label:hover {
   /* margin: 4px 2px; */
   cursor: pointer;
   font-family: 'star_jediregular', Arial, sans-serif;
+}
+
+.alert-text {
+  color: red;
+}
+.alertborder {
+border: solid red 1px;
+margin-bottom: 20px;
 }
 
 /* Post question/results page styling */

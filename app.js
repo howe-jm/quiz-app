@@ -114,7 +114,10 @@ function quizStartPageString() {
 function questionSubmitButton() {
   $('.js-main').submit('.js-question-page-submit', (evt) => {
     evt.preventDefault();
-    if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
+    if ($('form input[type=radio]:checked').val() === undefined) {
+      $('.answer-select').addClass('alertborder');
+      $('.alert-text').removeClass('hidden');
+  } else if ($('form input[type=radio]:checked').val() === STORE.questions[STORE.questionNumber].correctAnswer) {
       STORE.score++;
       STORE.correct = true;
       $('.post-question').html(generatePostQuestionString(STORE.correct));
@@ -148,7 +151,7 @@ function nextQuestionButton() {
     $('.answer-select').removeClass('hidden');
     $('.question-stats p').removeClass('hidden');
     $('.js-question-page-submit').removeClass('hidden');
-    render();
+    render()
   });
 }
 /*
@@ -163,10 +166,11 @@ function quizQuestionStringGenerator(quest) {
   return `
   <section class="quiz-container">
   <h2>${quest.question}</h2>
-  <form id="quiz-form">
+  <form id="quiz-form ">
     <ul class="answer-select">
+    <p class="alert-text hidden">Select an option to continue!</p>
     <li>
-      <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}" required>
+      <input type="radio" id="ans1" name="answers" value="${quest.answers[0]}">
       <label for="ans1">${quest.answers[0]}</label><br>
     </li>
     <li>
