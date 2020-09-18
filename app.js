@@ -182,7 +182,8 @@ function quizQuestionStringGenerator(quest) {
     </ul>
     <div class="post-question hidden"></div>
   </form>
-  <p>Current score is ${STORE.score} out of ${STORE.questions.length}</p>
+  <p>Answered Correctly: ${STORE.score}</p><p>Answered Incorrectly: ${STORE.questionNumber - STORE.score}</p>
+  <p>Question ${STORE.questionNumber + 1} out of ${STORE.questions.length}</p>
   </section>
   `;
 }
