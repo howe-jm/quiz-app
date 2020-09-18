@@ -43,7 +43,7 @@ h1 {
 h2 {
   font-size: 28px;
   margin: auto;
-  padding: 5%;
+  padding: 5% 5% 0 5%;
 }
 
 section {
@@ -92,7 +92,7 @@ ul {
   width: auto;
   font-size: 22px;
   padding-right: 5%;
-  padding: 5%;
+  padding: 0 5% 5% 5%;
 }
 
 li {
@@ -243,11 +243,9 @@ li label:hover {
 .post-question {
   display: flex;
   flex-flow: column wrap;
-  margin-top: 40px;
   border: solid yellow 2px;
   height: 200px;
   padding: 0 20px;
-  margin-top: -30px;
 }
 
 .post-question p {
