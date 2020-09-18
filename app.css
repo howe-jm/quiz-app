@@ -7,9 +7,7 @@
   *
 */
 
-
 /* Basic HTML tag styling */
-
 
 main {
   display: flex;
@@ -18,9 +16,9 @@ main {
 }
 
 body {
-  background-color: #363b40;  
+  background-color: #363b40;
   font-family: 'Baloo Tammudu 2', cursive;
-  background-image: url("images/star-wars-bg.png");
+  background-image: url('images/star-wars-bg.png');
   color: white;
   width: 100%;
   margin: 0;
@@ -52,10 +50,7 @@ section {
   text-align: center;
 }
 
-
-
 /* Box container for questions/results styling */
-
 
 .quiz-container {
   box-sizing: border-box;
@@ -70,10 +65,7 @@ section {
   margin-top: 25px;
 }
 
-
-
 /* Answer button styling */
-
 
 form {
   font-size: 22px;
@@ -109,7 +101,7 @@ li {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-li input[type="radio"] {
+li input[type='radio'] {
   opacity: 0;
   position: fixed;
   width: 0;
@@ -125,7 +117,7 @@ li label {
   border-radius: 4px;
 }
 
-li input[type="radio"]:checked + label {
+li input[type='radio']:checked + label {
   background-image: linear-gradient(to right, red, blue);
   border-color: yellow;
   color: white;
@@ -135,10 +127,14 @@ li label:hover {
   background-color: rgba(255, 255, 0, 0.5);
 }
 
-
+.question-stats {
+  font-family: 'Baloo Tammudu 2', cursive;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: -8px;
+}
 
 /* Start-Submit-Restart button styling */
-
 
 .start-button {
   display: flex;
@@ -226,9 +222,7 @@ li label:hover {
   /* margin: 4px 2px; */
   cursor: pointer;
   font-family: 'star_jediregular', Arial, sans-serif;
-
 }
-
 
 /* Post question/results page styling */
 
@@ -266,10 +260,7 @@ li label:hover {
   flex-flow: column wrap;
 }
 
-
-
 /* Media Queries for desktop accessibility */
-
 
 @media all and (min-width: 900px) {
   main {
@@ -282,13 +273,13 @@ li label:hover {
   }
 
   header {
-      display: flex;
-      justify-content: center;
-      padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    padding: 0 30px;
   }
 
   header h1 {
-      margin: 14px 0;
-      padding-top: 0;
+    margin: 14px 0;
+    padding-top: 0;
   }
 }
