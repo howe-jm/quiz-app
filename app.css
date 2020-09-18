@@ -189,7 +189,7 @@ li label:hover {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 10% 0 0 3%;
+  margin-top: 10%;
   /* position: absolute; */
   background-color: yellow;
   border: none;
