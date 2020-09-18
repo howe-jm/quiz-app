@@ -109,6 +109,9 @@ function quizStartPageString() {
     matches the correct answer. If it does, it adds 1 to the
     STORE.score. Either way, it increases the STORE.questionNumber
     variable by one at the end, and triggers a re-render of the page.
+
+    If the user doesn't select anything, the button triggers an
+    answer required display.
 */
 
 function questionSubmitButton() {
@@ -127,18 +130,32 @@ function questionSubmitButton() {
   });
 }
 
+/* 
+    The results of the question are given by simply revealing elements 
+    by CSS and hiding the quiz form without re-rendering the page.    
+*/
+
 function postQuestionDisplay() {
   $('.post-question').html(generatePostQuestionString(STORE.correct));
   $('.post-question').removeClass('hidden');
   $('.answer-select').addClass('hidden');
   $('.question-stats').addClass('hidden');
   $('.js-question-page-submit').addClass('hidden');
-} 
+
+
+/* 
+    The no answer display is handled the same way as the results display.
+*/} 
 
 function noAnswerDisplay() {
   $('.answer-select').addClass('alertborder');
   $('.alert-text').removeClass('hidden');
 }
+
+/* 
+   This function generates a string based on whether the user answered
+   correctly or incorrectly.
+*/
 
 function generatePostQuestionString(correct) {
   const string = correct
@@ -147,14 +164,15 @@ function generatePostQuestionString(correct) {
   return string;
 }
 
+/* 
+   This function re-renders the page when the user proceeds to the next
+   question from the question results display.
+*/ 
+
 function nextQuestionButton() {
   $('.js-main').on('click', '.js-question-page-next', (evt) => {
     evt.preventDefault();
     STORE.questionNumber++;
-    $('.post-question').addClass('hidden');
-    $('.answer-select').removeClass('hidden');
-    $('.question-stats p').removeClass('hidden');
-    $('.js-question-page-submit').removeClass('hidden');
     render()
   });
 }
@@ -219,6 +237,11 @@ function QuizResultsPage() {
   </section>
   `;
 }
+
+/*
+    This function simply reloads the page to start from the beginning
+    when the user clicks it after the quiz is done.
+*/
 
 function resultsResetButton() {
   $('.js-main').on('click', '.js-results-page-submit', () => location.reload());
